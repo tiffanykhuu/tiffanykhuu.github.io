@@ -1,4 +1,4 @@
 # tiffanykhuu.github.io
 <html>
-  <h1>Tiffany Khuu</h1>
+  <h3>Tiffany Khuu</h3>
 </html>
