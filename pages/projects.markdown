@@ -4,4 +4,4 @@ title: Projects
 permalink: /projects/
 ---
 
-Projects coming soon.git 
+Projects coming soon...

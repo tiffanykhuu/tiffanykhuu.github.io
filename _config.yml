@@ -11,6 +11,7 @@ github_username: tiffanykhuu
 # navigation
 header_pages:
   - pages/about.markdown
+  - pages/experience.markdown
   - pages/project.markdown
 
 # build settings
