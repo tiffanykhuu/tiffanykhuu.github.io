@@ -8,12 +8,6 @@ url: "https://tiffanykhuu.github.io"
 linkedin_username: tiffanyvkhuu
 github_username: tiffanykhuu
 
-# navigation
-header_pages:
-  - pages/about.markdown
-  - pages/experience.markdown
-  - pages/project.markdown
-
 # build settings
 theme: minima
 plugins:
