@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tiffany Khuu</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #f7f0e3; /* cream */
+      font-family: system-ui, sans-serif;
+    }
+    .blobs {
+      position: fixed; /* pins the layer to the screen */
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .blob {
+      position: absolute; /* makes left/top/right work */
+      border-radius: 47% 53% 56% 44% / 52% 45% 55% 48%; /* uneven circle */
+      animation: drift 26s ease-in-out infinite alternate;
+    }
+    .blob:nth-child(2n) { border-radius: 55% 45% 42% 58% / 48% 57% 43% 52%; animation-duration: 32s; }
+    .blob:nth-child(3n) { border-radius: 50% 50% 58% 42% / 44% 52% 48% 56%; animation-duration: 38s; }
+    @keyframes drift {
+      0%   { transform: translate(0, 0) rotate(0deg); }
+      50%  { transform: translate(18px, -22px) rotate(8deg); }
+      100% { transform: translate(-14px, 16px) rotate(-6deg); }
+    }
+    main { position: relative; z-index: 1; padding: 40px; }
+  </style>
+</head>
+<body>
+
+  <!-- testing out some zesty blue circles in the background hehe -->
+  <div class="blobs" aria-hidden="true">
+    <div class="blob" style="width:420px;height:400px;left:-120px;top:-90px;background:#bfdbfe;opacity:.55"></div>
+    <div class="blob" style="width:180px;height:190px;left:62%;top:6%;background:#60a5fa;opacity:.28"></div>
+    <div class="blob" style="width:520px;height:500px;right:-200px;top:30%;background:#93c5fd;opacity:.35"></div>
+    <div class="blob" style="width:90px;height:86px;left:12%;top:58%;background:#1d4ed8;opacity:.22"></div>
+    <div class="blob" style="width:300px;height:310px;left:28%;top:78%;background:#3b82f6;opacity:.16"></div>
+    <div class="blob" style="width:140px;height:130px;right:16%;top:84%;background:#1e3a8a;opacity:.16"></div>
+    <div class="blob" style="width:240px;height:232px;left:-60px;top:40%;background:#93c5fd;opacity:.3"></div>
+    <div class="blob" style="width:60px;height:64px;left:48%;top:46%;background:#60a5fa;opacity:.4"></div>
+    <div class="blob" style="width:360px;height:340px;right:30%;top:-140px;background:#dbeafe;opacity:.6"></div>
+  </div>
+
+  <main>
+    <h1>Hello, world!</h1>
+  </main>
+
+</body>
+</html>
