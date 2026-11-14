@@ -4,10 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tiffany Khuu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=JetBrains+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <!-- testing out some zesty blue circles in the background hehe -->
+  <!-- testing out some zesty blue blobs in the background hehe -->
   <div class="blobs" aria-hidden="true">
     <div class="blob" style="width:420px;height:400px;left:-120px;top:-90px;background:#bfdbfe;opacity:.55"></div>
     <div class="blob" style="width:180px;height:190px;left:62%;top:6%;background:#60a5fa;opacity:.28"></div>
@@ -33,6 +37,71 @@
         </nav>
       </div>
     </header>
+
+    <section class="hero">
+        <svg class="map" id="map" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-label="Map zooming from North America to Philadelphia, PA" role="img">
+          <g id="camera">
+            <g id="land"></g>
+            <path class="us" id="us"></path>
+            <path class="states" id="states"></path>
+            <path class="county" id="counties" style="opacity:0"></path>
+            <g id="labels"></g>
+            <circle id="pulse" fill="#3b82f6" opacity=".35"></circle>
+            <circle id="dot" fill="#1d4ed8" stroke="#fbf7ef"></circle>
+          </g>
+        </svg>
+    
+        <div class="clock" id="clock" aria-label="Local time in Philadelphia">
+          <span id="clock-icon">☀</span><span id="clock-time">--:-- --</span>
+        </div>
+    
+        <div class="hero-text container">
+          <p class="hello"><span id="type1"></span><span class="caret" id="caret1"></span></p>
+          <h1 class="name"><span id="type2"></span><span class="caret" id="caret2" style="display:none"></span></h1>
+          <p class="tagline" id="tagline">Fifth year software engineering student at Drexel University.</p>
+        </div>
+      </section>
+    
+      <main>
+        <section id="about">
+          <div class="container">
+            <p class="eyebrow">About me</p>
+            <div class="panel about">
+              <div>
+                <h2>who am i...?</h2>
+                <p>My name is Tiff and I'm a developer! I have interest and hold experience in data science, robotic process automation, and  full-stack development.</p>
+                <p class="muted">What's currently taking up most of my time is my senior project, Aftermath.
+                    It's a natural disaster recovery web-app designed for surivors who need help with finding 
+                    resources and figuring out what to do next. I'm working with a team of senior UI/UX students as a back-end developer, 
+                    and you can see what we're up to in the projects page! </p>
+              </div>
+              <!-- replace with <div class="photo"><img src="assets/img/something.jpg" alt="Tiffany Khuu"></div> -->
+              <div class="photo ph">insert photo here</div>
+            </div>
+          </div>
+        </section>
+    
+        <section id="photos">
+          <div class="container">
+            <p class="eyebrow">Photos</p>
+            <h2>what else am i up to...?</h2>
+            <div class="gallery">
+              <div class="ph tall">photo</div>
+              <div class="ph wide">photo</div>
+              <div class="ph">photo</div>
+              <div class="ph">photo</div>
+              <div class="ph wide">photo</div>
+              <div class="ph">photo</div>
+            </div>
+          </div>
+        </section>
+      </main>
+    
+      <footer>© <span id="year"></span> Tiffany Khuu · Philadelphia, PA</footer>
+    </div>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+    <script src="assets/js/map-data.js"></script>
+    <script src="assets/js/intro.js"></script>
 
 </body>
 </html>
