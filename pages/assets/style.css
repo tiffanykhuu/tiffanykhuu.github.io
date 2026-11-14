@@ -1,0 +1,74 @@
+:root {
+    --cream: #f7f0e3;
+    --cream-2: #fbf7ef;
+    --ink: #1d2a44;
+    --ink-soft: #4a5874;
+    --blue-900: #1e3a8a;
+    --blue-700: #1d4ed8;
+    --blue-500: #3b82f6;
+    --blue-400: #60a5fa;
+    --blue-300: #93c5fd;
+    --blue-200: #bfdbfe;
+    --line: rgba(29, 78, 216, .16);
+    --radius: 18px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font: 400 17px/1.65 "DM Sans", system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Background: zesty blue blobs */
+  .blobs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .blob {
+    position: absolute;
+    border-radius: 47% 53% 56% 44% / 52% 45% 55% 48%;
+    animation: drift 26s ease-in-out infinite alternate;
+  }
+  .blob:nth-child(2n) { border-radius: 55% 45% 42% 58% / 48% 57% 43% 52%; animation-duration: 32s; }
+  .blob:nth-child(3n) { border-radius: 50% 50% 58% 42% / 44% 52% 48% 56%; animation-duration: 38s; animation-direction: alternate-reverse; }
+  @keyframes drift {
+    0%   { transform: translate(0, 0) rotate(0deg) scale(1); }
+    50%  { transform: translate(18px, -22px) rotate(8deg) scale(1.04); }
+    100% { transform: translate(-14px, 16px) rotate(-6deg) scale(.97); }
+  }
+
+  /* layout */
+  .wrap { position: relative; z-index: 1; }
+  .container { width: min(1120px, 100% - 48px); margin-inline: auto; }
+
+  /* site header / navigation (shared by every page) */
+.site-header {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(247, 240, 227, .72);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .site-header.over-map { position: fixed; left: 0; right: 0; background: rgba(247, 240, 227, .55); }
+  .site-header .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+  .logo { font: 500 22px "Fraunces", Georgia, serif; color: var(--ink); text-decoration: none; letter-spacing: -.01em; white-space: nowrap; }
+  .logo span { color: var(--blue-500); }
+  .site-nav { display: flex; gap: 4px; }
+  .site-nav a {
+    color: var(--ink-soft); text-decoration: none; font-size: 15px; font-weight: 500;
+    padding: 7px 14px; border-radius: 999px; transition: background .2s, color .2s;
+  }
+  .site-nav a:hover { background: var(--blue-200); color: var(--blue-900); }
+  .site-nav a.active { background: var(--blue-900); color: var(--cream-2); }
+  
+  /* sub-page heading */
+  .page-head { padding: 80px 0 8px; }
+  .page-head h1 { font: 300 clamp(44px, 7vw, 80px)/1.05 "Fraunces", Georgia, serif; margin: 0 0 14px; letter-spacing: -.02em; }
+  .page-head p.lede { max-width: 620px; color: var(--ink-soft); font-size: 18px; }
+  section.first { padding-top: 32px; }
+
+  /* map header */
+
+  /* photo placeholders */
+
+  /* sections */ 
+
