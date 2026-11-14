@@ -68,7 +68,17 @@
 
   /* map header */
 
+
+
   /* photo placeholders */
+  .ph {
+    display: grid; place-items: center; text-align: center;
+    background:
+      repeating-linear-gradient(135deg, rgba(59,130,246,.10) 0 10px, rgba(59,130,246,.04) 10px 20px),
+      var(--cream-2);
+    color: #6a83b3; font: 500 13px "JetBrains Mono", monospace;
+    border: 1.5px dashed rgba(59,130,246,.35);
+  }
 
   /* sections */ 
 
