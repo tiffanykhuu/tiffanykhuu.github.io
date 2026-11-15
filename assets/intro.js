@@ -126,9 +126,11 @@
       $("caret1").style.display = "none";
       $("caret2").style.display = "inline-block";
       await type($("type2"), "I'm Tiffany", 110);
-      await sleep(100); /* map zoom delay after it finishes typing */
-      await zoomIn();
+      await sleep(750); /* map zoom delay after it finishes typing */
+      const zoom = zoomIn();
+      await sleep(100);
       reveal();
+      await zoom;
     }
     intro();
   })();
