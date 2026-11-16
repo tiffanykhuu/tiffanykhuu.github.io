@@ -47,30 +47,83 @@
     <section class="first">
       <div class="container">
         <div class="grid3">
-          <article class="panel card">
+
+          <!-- Aftermath -->
+          <article class="panel card" data-project>
             <div class="ph">project</div>
             <div class="body">
               <h3>Aftermath</h3>
-              <p class="muted">Lead Data Architect, Back-end Developer</p>
-              <div class="tags"><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">MongoDB</span><span class="tag">Node</span><span class="tag">Figma</span><span class="tag">Express</span></div>
+              <p class="muted">Lead Data Architect, Back-End Developer</p>
+              <div class="tags"><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">MongoDB</span>
+                <span class="tag">Node</span><span class="tag">Figma</span><span class="tag">Express</span><span class="tag">Vercel</span></div>
+            </div>
+            <!-- only shows in expanded window -->
+            <div class="project-details">
+              <dl class="modal-meta">
+                <div><dt>Role</dt><dd>Lead Data Architect, Back-End Developer</dd></div>
+                <div><dt>Duration</dt><dd>Sep 2026 – Present</dd></div>
+              </dl>
+              <p>
+                Aftermath is a natural disaster recovery web app designed for survivors who need help
+                finding resources and figuring out what to do next. It is actively being built as my
+                senior project with Ark Labs, a team of six that includes five UXID majors focused on
+                front-end development and design. I help lead back-end development alongside one of our
+                teammates, who focuses on database design.
+              </p>
+              <ul>
+                <li>Lead backend architecture for web-based application, translating UX team user flows into data models</li>
+                <li>Design MongoDB schemas and build the Express/Node.js API layer for a React/TypeScript frontend deployed on Vercel</li>
+                <li>Integrate government and open-data APIs (NWS, FEMA) to surface location-based disaster alerts and nearby resources</li>
+              </ul>
+              <a class="btn" href="https://intheaftermath.vercel.app/" target="_blank" rel="noopener">View progress ↗</a>
             </div>
           </article>
-          <article class="panel card">
+
+          <!-- Simpet -->
+          <article class="panel card" data-project>
             <div class="ph">project</div>
             <div class="body">
               <h3>Simpet Mobile Game</h3>
-              <p class="muted">Developer</p>
+              <p class="muted">Developer, UI Designer</p>
               <div class="tags"><span class="tag">C#</span><span class="tag">Godot</span><span class="tag">Git</span></div>
             </div>
+            <div class="project-details">
+              <dl class="modal-meta">
+                <div><dt>Role</dt><dd>Developer, UI Designer</dd></div>
+                <div><dt>Duration</dt><dd>Sep 2023 – May 2024</dd></div>
+              </dl>
+              <p>Simpet is a Godot pet simulation mobile game that we developed and tested using Godot and GitHub.
+                 I worked on this game with a group of fellow first-year students, focusing on OOP in C# and learning version control.
+                 This project was my very first dev project and first experience with agile methodologies.</p>
+              <ul>
+                <li>Created 2D sprites and buttons in Asperite, focusing on smooth player interactivity</li>
+                <li>Managed development with user stories and a Kanban board to organize and prioritize tasks and features</li>
+                <li>Analyzed metrics such as burndown charts to improve team efficiency in a sprint-based Scrum workflow</li>
+              </ul>
+              <a class="btn" href="#" target="_blank" rel="noopener">View demo ↗</a>
+            </div>
           </article>
-          <article class="panel card">
+
+          <!-- project placeholder -->
+          <article class="panel card" data-project>
             <div class="ph">project</div>
             <div class="body">
               <h3>project name</h3>
               <p class="muted">role</p>
               <div class="tags"><span class="tag">skill</span><span class="tag">skill</span></div>
             </div>
+            <div class="project-details">
+              <dl class="modal-meta">
+                <div><dt>Role</dt><dd>role</dd></div>
+                <div><dt>Duration</dt><dd>Month Year – Month Year</dd></div>
+              </dl>
+              <ul>
+                <li>Bullet point</li>
+              </ul>
+              <a class="btn" href="#" target="_blank" rel="noopener">View project ↗</a>
+            </div>
           </article>
+
         </div>
       </div>
     </section>
@@ -78,6 +131,60 @@
 
   <footer>© <span id="year"></span> Tiffany Khuu · Philadelphia, PA</footer>
 </div>
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+
+<!-- expanded project window -->
+<dialog class="project-modal" id="projectModal" aria-labelledby="modalTitle">
+  <button class="modal-close" type="button" aria-label="Close">&times;</button>
+  <div class="modal-inner">
+    <p class="eyebrow">Project</p>
+    <h2 class="modal-title" id="modalTitle"></h2>
+    <div class="tags modal-tags"></div>
+    <div class="modal-body"></div>
+  </div>
+</dialog>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const modal  = document.getElementById("projectModal");
+  const mTitle = modal.querySelector(".modal-title");
+  const mTags  = modal.querySelector(".modal-tags");
+  const mBody  = modal.querySelector(".modal-body");
+  let lastCard = null;
+
+  function openProject(card) {
+    lastCard = card;
+    mTitle.textContent = card.querySelector("h3").textContent;
+    mTags.innerHTML    = card.querySelector(".tags")?.innerHTML || "";
+    mBody.innerHTML    = card.querySelector(".project-details")?.innerHTML || "";
+    modal.showModal();
+    modal.querySelector(".modal-inner").scrollTop = 0;
+    document.body.classList.add("modal-open");
+  }
+
+  document.querySelectorAll(".card[data-project]").forEach(card => {
+    // make each card work with the keyboard like a button
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-haspopup", "dialog");
+
+    card.addEventListener("click", () => openProject(card));
+    card.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openProject(card); }
+    });
+  });
+
+  // close with x button
+  modal.querySelector(".modal-close").addEventListener("click", () => modal.close());
+
+  // close by clicking dimmed background
+  modal.addEventListener("click", e => { if (e.target === modal) modal.close(); });
+
+  // runs on every close button, background click or Esc
+  modal.addEventListener("close", () => {
+    document.body.classList.remove("modal-open");
+    lastCard?.focus();
+  });
+</script>
 </body>
 </html>

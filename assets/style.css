@@ -220,3 +220,55 @@
 @media (max-width: 860px) {
   .skills-grid { grid-template-columns: 1fr; }
 }
+
+/* project cards + expanded window */
+.card[data-project] { cursor: pointer; }
+.card[data-project]:focus-visible { outline: 2px solid var(--blue-500); outline-offset: 4px; }
+.project-details { display: none; } /* hidden in the card, only shown in the window */
+
+.project-modal {
+  width: min(720px, 92vw);
+  max-height: 86vh;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--cream-2);
+  color: var(--ink);
+  box-shadow: 0 30px 80px rgba(30,58,138,.28);
+  overflow: hidden;
+}
+.project-modal::backdrop {
+  background: rgba(29,42,68,.45);
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+}
+.project-modal[open] { animation: modal-in .25s ease-out; }
+.project-modal[open]::backdrop { animation: fade-in .25s ease-out; }
+@keyframes modal-in { from { opacity: 0; transform: translateY(16px) scale(.97); } to { opacity: 1; transform: none; } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+.modal-inner { max-height: 86vh; overflow-y: auto; padding: 36px 36px 32px; }
+.modal-close {
+  position: absolute; top: 14px; right: 14px;
+  width: 38px; height: 38px; border-radius: 50%;
+  border: none; background: var(--blue-200); color: var(--blue-900);
+  font-size: 22px; line-height: 1; cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.modal-close:hover { background: var(--blue-900); color: var(--cream-2); }
+.modal-title { font: 400 clamp(28px, 4vw, 38px)/1.15 "Fraunces", Georgia, serif; margin: 0 48px 8px 0; letter-spacing: -.01em; }
+.modal-tags { margin: 0 0 22px; }
+.modal-meta { display: flex; flex-wrap: wrap; gap: 10px 32px; margin: 0 0 20px; padding: 16px 0; border-block: 1px solid var(--line); }
+.modal-meta div { display: flex; flex-direction: column; }
+.modal-meta dt { font: 500 12px "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: .08em; color: var(--blue-700); }
+.modal-meta dd { margin: 0; font-weight: 500; }
+.modal-body ul { padding-left: 20px; margin: 0 0 22px; }
+.modal-body li { margin-bottom: 8px; }
+.modal-body li::marker { color: var(--blue-500); }
+body.modal-open { overflow: hidden; } /* stops the page behind from scrolling */
+
+@media (max-width: 860px) {
+  .modal-inner { padding: 28px 22px 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-modal[open], .project-modal[open]::backdrop { animation: none; }
+}
